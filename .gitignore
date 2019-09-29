@@ -4,8 +4,8 @@ node_modules/
 coverage/
 .idea/
 
-dist/*.js
-dist/*.map
+# dist/*.js
+# dist/*.map
 
 yarn-error.log
 .npmrc
