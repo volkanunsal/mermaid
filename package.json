@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build": "webpack --progress --colors",
-    "postbuild": "documentation build src/mermaidAPI.js --shallow -f md --markdown-toc false -o docs/mermaidAPI.md",
+    "build:docs": "documentation build src/mermaidAPI.js --shallow -f md --markdown-toc false -o docs/mermaidAPI.md",
     "build:watch": "yarn build --watch",
     "minify": "minify ./dist/mermaid.js > ./dist/mermaid.min.js",
     "release": "yarn build -p --config webpack.config.prod.babel.js",
@@ -27,7 +27,7 @@
     "test": "yarn lint && jest src",
     "test:watch": "jest --watch src",
     "prepublishOnly": "yarn build && yarn release && yarn test && yarn e2e",
-    "prepush": "yarn test"
+    "prepush": "yarn build && yarn release && yarn minify && git add dist && git commit --m 'Commit precompiled assets'"
   },
   "repository": {
     "type": "git",
